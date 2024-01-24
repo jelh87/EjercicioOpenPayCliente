@@ -24,17 +24,17 @@ class ClienteRestControllerTest {
 	/**
 	 * resultadoAll
 	 */
-	private Object resultadoAll = new Object();
+	private Object resultadoAll;
 	
 	/**
 	 * resultadoOne
 	 */
-	private Object resultadoOne = new Object();
+	private Object resultadoOne;
 	
 	/**
 	 * noEsperado
 	 */
-	private Object noEsperado = new Object();
+	private Object noEsperado;
 	
 	/**
 	 * id
