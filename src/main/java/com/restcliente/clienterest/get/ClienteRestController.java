@@ -13,14 +13,14 @@ public class ClienteRestController {
     /**
      * Dependencia
      */
-    private final ClienteRestService postService;
+    private final ClienteRestService clienteRestService;
 
     /**
      * Dependencia
-     * @param postService service
+     * @param clienteRestService service
      */
-    public ClienteRestController(ClienteRestService postService) {
-        this.postService = postService;
+    public ClienteRestController(ClienteRestService clienteRestService) {
+        this.clienteRestService = clienteRestService;
     }
     
     /**
@@ -29,7 +29,7 @@ public class ClienteRestController {
      */
     @GetMapping("")
     public Object getAllPersonajes() {
-        return postService.getAllPersonajes();
+        return clienteRestService.getAllPersonajes();
     }
 
     /**
@@ -38,8 +38,8 @@ public class ClienteRestController {
      * @return Object con el personaje correspondiente al id
      */
     @GetMapping("/{id}") 
-    public Object getPersonajeById(@PathVariable Integer id) { 
-    	return postService.getPersonajeById(id); 
+    public Object getPersonajeById(@PathVariable Long id) { 
+    	return clienteRestService.getPersonajeById(id); 
     }
 	 
 

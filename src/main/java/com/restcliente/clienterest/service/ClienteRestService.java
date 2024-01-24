@@ -15,7 +15,7 @@ public class ClienteRestService {
     private final RestClient restClient;
 
     /**
-     * 	Accesso
+     * 	Access
      */
     public ClienteRestService() {
     	restClient = RestClient.builder()
@@ -28,10 +28,11 @@ public class ClienteRestService {
      * @return Objecto con todos los personajes
      */
     public Object getAllPersonajes() {
-    	return restClient.get()
+    	Object respuesta = restClient.get()
     			.uri("https://gateway.marvel.com:443/v1/public/characters?ts=1&apikey=7b42f958ad03d181fad9d0af2d094191&hash=0f4544fc97fffb4f592a7f9ad089a5ec")
     			.retrieve() 
     			.body(Object.class); 
+    	return respuesta;
     }
     
     /**
@@ -39,11 +40,12 @@ public class ClienteRestService {
      * @param id id del personaje
      * @return Objecto con el personaje por id
      */
-    public Object getPersonajeById(int id) { 
-    	return restClient.get() 
+    public Object getPersonajeById(Long id) { 
+    	Object respuesta = restClient.get() 
     			.uri("https://gateway.marvel.com:443/v1/public/characters/{id}?ts=1&apikey=7b42f958ad03d181fad9d0af2d094191&hash=0f4544fc97fffb4f592a7f9ad089a5ec", id)
     			.retrieve() 
     			.body(Object.class); 
+    	return respuesta;
     }
 
 }
