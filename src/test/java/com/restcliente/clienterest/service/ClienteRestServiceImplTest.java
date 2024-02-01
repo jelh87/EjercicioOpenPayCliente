@@ -1,25 +1,21 @@
-package com.restcliente.clienterest.get;
+package com.restcliente.clienterest.service;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import com.restcliente.clienterest.service.ClienteRestService;
+
+import com.restcliente.clienterest.service.impl.ClienteRestServiceImpl;
 
 /**
- * Clase test de la clase ClienteRestController
+ * Clase test de la clase ClienteRestService
  */
-class ClienteRestControllerTest {
+class ClienteRestServiceImplTest {
 	
 	/**
 	 * Instancia
 	 */
-	private ClienteRestService clienteRestService = new ClienteRestService();
-	
-	/**
-	 * Instancia
-	 */
-	private ClienteRestController clienteRestController = new ClienteRestController(clienteRestService);
+	private ClienteRestServiceImpl clienteRestService = new ClienteRestServiceImpl();
 	
 	/**
 	 * resultadoAll
@@ -40,23 +36,23 @@ class ClienteRestControllerTest {
 	 * id
 	 */
 	private Long id = 1011334L;
-
+	
 	/**
 	 * Metodo setup ejecuciones previas a los Test
 	 */
 	@BeforeEach
 	public void setup(){
-		resultadoAll = clienteRestController.getAllPersonajes();
-		resultadoOne = clienteRestController.getPersonajeById(id);
+		resultadoAll = clienteRestService.getAllPersonajes();
+		resultadoOne = clienteRestService.getPersonajeById(id);
 	}
-	
+
 	/**
 	 * Test del metodo getAllPersonajes
 	 */
 	@DisplayName("JUnit test metodo getAllPersonajes")
 	@Test
 	void testGetAllPersonajes() {
-		final Object esperado = clienteRestController.getAllPersonajes();
+		final Object esperado = clienteRestService.getAllPersonajes();
 		Assertions.assertNotNull(esperado);
 		Assertions.assertEquals(resultadoAll, esperado);
 		Assertions.assertNotEquals(resultadoOne, esperado);
@@ -69,7 +65,7 @@ class ClienteRestControllerTest {
 	@DisplayName("JUnit test metodo getPersonajeById")
 	@Test
 	void testGetPersonajeById() {
-		final Object esperado = clienteRestController.getPersonajeById(id);
+		final Object esperado = clienteRestService.getPersonajeById(id);
 		Assertions.assertNotNull(esperado);
 		Assertions.assertEquals(resultadoOne, esperado);
 		Assertions.assertNotEquals(resultadoAll, esperado);

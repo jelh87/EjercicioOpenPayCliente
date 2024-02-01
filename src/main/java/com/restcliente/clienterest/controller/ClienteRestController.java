@@ -1,5 +1,8 @@
-package com.restcliente.clienterest.get;
+package com.restcliente.clienterest.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.restcliente.clienterest.service.ClienteRestService;
 
@@ -9,19 +12,17 @@ import com.restcliente.clienterest.service.ClienteRestService;
 @RestController
 @RequestMapping("/public/marvel")
 public class ClienteRestController {
-
-    /**
-     * Dependencia
-     */
-    private final ClienteRestService clienteRestService;
-
-    /**
-     * Dependencia
-     * @param clienteRestService service
-     */
-    public ClienteRestController(ClienteRestService clienteRestService) {
-        this.clienteRestService = clienteRestService;
-    }
+	
+	/**
+	 * Componente del logger
+	 */
+	private static final Logger LOG = LoggerFactory.getLogger(ClienteRestController.class);
+	
+	/**
+	 * Inyeccion de dependencia clienteRestService
+	 */
+	@Autowired
+	private ClienteRestService clienteRestService;
     
     /**
      * Metodo para obtener todos los personajes
@@ -29,6 +30,7 @@ public class ClienteRestController {
      */
     @GetMapping("")
     public Object getAllPersonajes() {
+    	LOG.info("Ingresa al metodo getAllPersonajes de la clase ClienteRestController");
         return clienteRestService.getAllPersonajes();
     }
 
@@ -39,6 +41,7 @@ public class ClienteRestController {
      */
     @GetMapping("/{id}") 
     public Object getPersonajeById(@PathVariable Long id) { 
+    	LOG.info("Ingresa al metodo getPersonajeById de la clase ClienteRestController");
     	return clienteRestService.getPersonajeById(id); 
     }
 	 
